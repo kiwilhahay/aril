@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariel</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* =========================
+           HALAMAN PERTAMA
+        ========================= */
+
+        #halaman1 {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #000000,
+                #333333,
+                #777777,
+                #ffffff
+            );
+        }
+
+        .kotak {
+            text-align: center;
+        }
+
+        .judul {
+            color: white;
+            font-size: 45px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px white;
+        }
+
+        .tombol {
+            padding: 18px 45px;
+            border: 2px solid white;
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.15);
+            color: white;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 0 20px rgba(255,255,255,0.7);
+
+            transition: 0.3s;
+        }
+
+        .tombol:hover {
+            background: white;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0 0 35px white;
+        }
+
+
+        /* =========================
+           HALAMAN KEDUA
+        ========================= */
+
+        #halaman2 {
+            display: none;
+
+            width: 100vw;
+            height: 100vh;
+
+            position: relative;
+            overflow: hidden;
+
+            background: linear-gradient(
+                135deg,
+                #000000 0%,
+                #111111 30%,
+                #555555 65%,
+                #ffffff 100%
+            );
+        }
+
+        .ariel {
+            position: absolute;
+
+            color: white;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            text-shadow:
+                0 0 5px white,
+                0 0 10px white,
+                0 0 20px rgba(255,255,255,0.8);
+
+            animation: melayang ease-in-out infinite;
+
+            user-select: none;
+        }
+
+        @keyframes melayang {
+
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(40px, -50px) rotate(10deg);
+            }
+
+            50% {
+                transform: translate(-30px, 30px) rotate(-10deg);
+            }
+
+            75% {
+                transform: translate(50px, 20px) rotate(8deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         HALAMAN PERTAMA
+    ========================== -->
+
+    <div id="halaman1">
+
+        <div class="kotak">
+
+        
+
+            <button class="tombol" onclick="masuk()">
+                KLIK DISINI
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         HALAMAN KEDUA
+    ========================== -->
+
+    <div id="halaman2">
+
+    </div>
+
+
+    <script>
+
+        function masuk() {
+
+            // Hilangkan halaman pertama
+            document.getElementById("halaman1").style.display = "none";
+
+            // Tampilkan halaman kedua
+            document.getElementById("halaman2").style.display = "block";
+
+            // Membuat banyak tulisan Ariel
+            const halaman = document.getElementById("halaman2");
+
+            const jumlahAriel = 100;
+
+            for (let i = 0; i < jumlahAriel; i++) {
+
+                const tulisan = document.createElement("div");
+
+                tulisan.classList.add("ariel");
+
+                tulisan.innerHTML = "ariel";
+
+                // Posisi acak
+                tulisan.style.left =
+                    Math.random() * 100 + "vw";
+
+                tulisan.style.top =
+                    Math.random() * 100 + "vh";
+
+                // Ukuran acak
+                tulisan.style.fontSize =
+                    (15 + Math.random() * 35) + "px";
+
+                // Kecepatan acak
+                tulisan.style.animationDuration =
+                    (3 + Math.random() * 6) + "s";
+
+                // Delay acak
+                tulisan.style.animationDelay =
+                    (Math.random() * 5) + "s";
+
+                halaman.appendChild(tulisan);
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
